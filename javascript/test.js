@@ -1,0 +1,1 @@
+document.getElementById("infovis").innerHTML=Date();

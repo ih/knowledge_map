@@ -1,0 +1,25 @@
+function init(){
+  json = {
+    id:"a",
+    name:"a",
+    data: {},
+    children: [{
+		 id: "b",
+		 name: "b",
+		 data: {},
+		 children: []
+	       },
+	       {
+		 id: "c",
+		 name: "c",
+		 data: {},
+		 children: []
+	       },
+	       {
+		 id: "d",
+		 name: "d",
+		 data: {},
+		 children: []
+	       }]
+  }
+}

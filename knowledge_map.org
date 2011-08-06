@@ -1,0 +1,157 @@
+modification to Khan Academy code to allow for users to add content (knowledge map, excercises, videos)
+* features
+** allow a user to create and modify knowledge maps
+*** how does the current knowledge map work?
+**** where is the code located?
+In the frontend, the map is reached by clicking on the practice tab.  The practice tab page's html is in viewexercises.html in the root directory
+
+viewexcercises.html is a template and the corresponding handler exists in main.py and is called ViewAllExcercises
+
+The map seems to be created in this section
+    <div id="dashboard-map">
+        {% knowledgemap_embed exercises map_coords %}
+    </div>
+these are template values defined in the ViewAllExercises handler class
+
+viewexcercises.html is a template and the corresponding handler exists in main.py and is called ViewAllExcercises 
+***** understand app engine/django markup 
+****** DONE run server locally
+https://sites.google.com/a/khanacademy.org/forge/for-developers/getting-started-with-the-code
+
+from the google app engine directory run the command
+dev_appserver.py [khan directory]
+******* DONE go through startup guide
+http://code.google.com/appengine/docs/python/gettingstarted/
+
+**** how does the excercise code work?
+***** try to solve open issue 
+
+**** how does the knoweldge map code work?
+***** viewknowledgemap.html
+this file loads the javacript infovis toolkit (http://thejit.org/) which probably creates the graph
+*** ui
+the general idea is to allow users to easily add nodes to the knowledge map and indicate the relationships of the new node to other nodes
+**** adding a node
+***** right click to bring up add option
+the user will right-click on the map which will bring up a context-sensitive menu to add a node
+(or perhaps one can hover over a node and this will bring up a menu to add children?)
+****** how do clicks work?
+******* look at jit demo, look at code for clicking on knowledge map node 
+******* right click tutorial
+jquery http://www.webdeveloperjuice.com/2010/02/22/create-simple-jquery-right-click-cross-browser-vertical-menu/
+
+http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/#demo
+***** node info form
+if selected this menu should load a form for giving information on the node (an excercise)
+***** node info submission
+submitting the node info form should create an exercise entity and the map should display the new entity
+**** adding an edge
+*** backend
+**** node
+what does a node correspond to?
+**** link
+** allow a user to add excercises
+** interactive answering for flashcards
+when entering answer for a flashcard have a text region where they can type then compare what is typed to the true answer
+** allow abstraction over a set of nodes
+allow excercises to be grouped together
+
+when excercises get grouped then two hidden nodes will be created one at the top where all nodes that are prerequisites of any node in the group will connect to and any node in the group will connect to it as a prerequisite 
+
+and one at the bottom which will have as a prerequisite every node in the group and any node that has a member of the group as a prerequisite will have this bottom node as a prerequisite 
+
+
+
+** have color of node be a function of last reviewed (or need for review)
+** have a different type of node called problem which highlights a set of knowledge nodes that are needed to solve it
+* ka code
+** try and log in as admin
+* prototype
+** DONE create the basic appengine backend to go to the map page
+have a single knowledgemap page that displays the knowledge map
+** use jit to make a simple interface to the exercise backend
+use a modified spacetree like in khan academy
+*** DONE how does khan academy put the space tree into the exercise map?
+**** viewknowledgemap.html
+this html file contains the script that draws the st map
+***** code for dealing with ie
+***** rectangleWithOtherParents
+a node type that draws additional edges from a node to its other parents
+used b/c space tree nodes only have single parents
+
+***** translation of excercises into json data format
+starts at build the graph from the hidden excercise table
+this is used to by the JIT space tree 
+**** have knowledgemap.html display a dag
+the khan space tree using rectangleWithOtherParents node
+***** get regular spacetree to display
+minimal required things are injectInto, call to loadJSON, call to compute, call to onClick the root
+****** write html based on jit page demo
+view-source:http://thejit.org/static/v20/Jit/Examples/Spacetree/example3.html
+******* DONE how does khan/app engine include javascript into an html file?
+modify app.yaml to have a handler for static files
+******* DONE why is css needed for the spacetree to display?
+******** DONE only base.css needed why?
+it seems to be because the infovis div needs to have an area specified (perhaps b/c this defines the canvas size)?
+****** add spacetree javascript
+******* DONE example3.js
+******** first block
+an anonymous function that is used to set the global variables labelType, useGradients, nativeTextSupport, and animate 
+these variables are for ie and ipad
+******** declaration of Log
+this is the object literal way of defining a prototype(think class) in javascript
+
+it creates a Log object that has a method for printing some text to the screen in a certain location (as specified by its dom id)
+
+******** init
+creates the data in the json variable, the jit space tree uses data in this format to construct the tree/graph
+
+creates an instance of a $jit spacetree 
+********* spacetree constructor
+seems to take a json formatted object, which has initial parameters for the space tree like 'injectInto'
+
+********* spacetree functions
+once the spacetree instance is created certain functions are called for the instance such as loadJSON, compute, and onclick
+******* DONE knowledge_map.js
+******* DONE change orientation
+******* add google maps zoom?
+***** turn regular spacetree into dag
+****** add khan code
+
+*** DONE add rectangleWithOthers to knowledge_map.js
+**** DONE what is the format for otherParents
+a list of node ids
+*** be able to create a node and connect to parents
+**** creating a node
+***** DONE how should a new node be created?
+click on the empty part of the map 
+this creates a node at that location
+
+have a button "organize" which does the renders the spacetree layout, this will allow the user to place nodes roughly where they want as they begin to figure out how it relates to other nodes and once the structure is determined one can get a cleaner layout quickly
+****** possibilities
+******* click on empty part of map 
+this one
+******* click on node 
+******* drag from empty to node
+******* button for creating a node in prominent location on the map
+
+***** right click menu
+right clicking on the map records the position of the click for drawing an added node to
+****** jquery context menu plugin
+http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/
+
+******* DONE what is jquery?
+javascript library
+***** node creation form
+***** draw the node
+**** connecting a node 
+**** organizing map
+a button that will render the nodes according to the spacetree format
+** implement the models and control for the map using appengine
+* examples
+** decompose a traditional document into a knowledge map 
+take a traditional linearly structured document and rewrite it in a graph structure then compare it side-by-side
+
+the cplusplus.com tutorial would be a good example
+
+compare to wittgenstein's Tractatus Logico-Philosophicus

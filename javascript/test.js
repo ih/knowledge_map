@@ -1,1 +1,4 @@
-document.getElementById("infovis").innerHTML=Date();
+$(function(){
+    alert("I'm working");
+  });
+//document.getElementById("infovis").innerHTML=Date();

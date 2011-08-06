@@ -50,7 +50,10 @@ submitting the node info form should create an exercise entity and the map shoul
 **** node
 what does a node correspond to?
 **** link
+** automatic clustering of questions
 ** allow a user to add excercises
+*** unanswered questions
+allow user to create questions that don't have answers and have visual appearance of the node in the map indicate this
 ** interactive answering for flashcards
 when entering answer for a flashcard have a text region where they can type then compare what is typed to the true answer
 ** allow abstraction over a set of nodes
@@ -140,8 +143,12 @@ right clicking on the map records the position of the click for drawing an added
 ****** jquery context menu plugin
 http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/
 
-******* DONE what is jquery?
+*******  what is jquery?
 javascript library
+******** TODO installation 
+http://www.jquerytutorialsforbeginners.com/installing-and-using-jquery/
+******** event handlers
+jquerytutorialsforbeginners event handlers
 ***** node creation form
 ***** draw the node
 **** connecting a node 

@@ -140,15 +140,19 @@ this one
 
 ***** right click menu
 right clicking on the map records the position of the click for drawing an added node to
-****** jquery context menu plugin
+****** TODO jquery context menu plugin
 http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/
 
-*******  what is jquery?
+*******  jquery basics
 javascript library
-******** TODO installation 
+******** DONE installation 
 http://www.jquerytutorialsforbeginners.com/installing-and-using-jquery/
-******** event handlers
+******** DONE event handlers
 jquerytutorialsforbeginners event handlers
+******** plugins
+********* installation
+place the folder for the plugin into the javascript source
+include the script it in the html after including the jquery source
 ***** node creation form
 ***** draw the node
 **** connecting a node 

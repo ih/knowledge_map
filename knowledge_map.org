@@ -153,12 +153,17 @@ jquerytutorialsforbeginners event handlers
 ********* installation
 place the folder for the plugin into the javascript source
 include the script it in the html after including the jquery source
-***** node creation form
-***** draw the node
+***** add node
+****** add to the json graph data
+******* DONE initially make child of root
+******** DONE change function in contextMenu
+******* TODO be able to add parents to a node
+****** redraw the graph?
 **** connecting a node 
 **** organizing map
 a button that will render the nodes according to the spacetree format
 ** implement the models and control for the map using appengine
+*** node creation form
 * examples
 ** decompose a traditional document into a knowledge map 
 take a traditional linearly structured document and rewrite it in a graph structure then compare it side-by-side

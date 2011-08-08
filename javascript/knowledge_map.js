@@ -1,4 +1,5 @@
 function init(){
+
   //document.getElementById("map").innerHTML=Date();
   json = {
     id:'a',
@@ -65,4 +66,35 @@ function init(){
   knowledgeMap.loadJSON(json);
   knowledgeMap.compute();
   knowledgeMap.onClick(knowledgeMap.root);
-}
+
+  /* menu for adding/organizing map */
+  $('#map').contextMenu(
+      {
+	menu: 'myMenu'
+      },
+      function(action, el, pos){
+	switch(action){
+	  case 'add':
+	    addNode();
+	    break;
+	  case 'organize':
+	    organizeNodes();
+	    break;
+	  };
+      });
+  function addNode(){
+    var newNode = {
+      id: Math.random(),
+      name: 'q',
+      data: {},
+      children: []
+    };
+    json.children.push(newNode);
+    knowledgeMap.loadJSON(json);
+    knowledgeMap.refresh();
+//    alert('Add node');
+  };
+  function organizeNodes(){
+    alert('organize nodes');
+  };
+};

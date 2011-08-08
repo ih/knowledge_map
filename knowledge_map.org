@@ -140,9 +140,9 @@ this one
 
 ***** right click menu
 right clicking on the map records the position of the click for drawing an added node to
-****** TODO jquery context menu plugin
+****** DONE jquery context menu plugin
 http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/
-
+in order to get the menu to properly display in the right place have the css position be set to fixed
 *******  jquery basics
 javascript library
 ******** DONE installation 

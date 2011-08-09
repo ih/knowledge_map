@@ -61,6 +61,9 @@ function init(){
   				   },
 				   Node: {
 				     type: 'rectangleWithOtherParents'
+				   },
+				   onCreateLabel: function(label, node){
+				     label.innerHTML = node.id;
 				   }
   				 });
   knowledgeMap.loadJSON(json);

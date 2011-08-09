@@ -160,7 +160,7 @@ include the script it in the html after including the jquery source
 ******** DONE redraw the graph?
 use refresh function for now
 ******* TODO be able to add parents to a node
-******** make labels/names visible
+******** DONE make labels/names visible
 ******** create 'add parent' in context-menu
 ******** have form for parents appear for add parent option
 **** connecting a node 

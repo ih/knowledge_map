@@ -64,6 +64,13 @@ function init(){
 				   },
 				   onCreateLabel: function(label, node){
 				     label.innerHTML = node.id;
+				     $(label).contextMenu(
+				       {
+					 menu: 'nodeMenu'
+				       },
+				       function(action, el, pos){
+					 alert('blue box');
+				       });
 				   }
   				 });
   knowledgeMap.loadJSON(json);

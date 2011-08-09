@@ -161,19 +161,33 @@ include the script it in the html after including the jquery source
 use refresh function for now
 ******* be able to add parents to a node
 ******** DONE make labels/names visible
-******** create 'add parent' in context-menu
-********* create a context menu for nodes
-********** jquery context menu plugin
+******** DONE create 'add parent' in context-menu
+********* DONE create a context menu for nodes
+********** DONE possible approaches
+*********** DONE jquery context menu plugin
+probably can't directly use jquery contextMenu plugin, because nodes aren't really html elements
+
 use regular expression to get node div ids 
 create a context menu using the selector for node divs
-*********** DONE can you have nested context menus?
+************ DONE can you have nested context menus?
 if div B is inside div A, can div B have a different context menu?
 
 yes, the contextMenu for the inner div is defined just like that of the outer
-*********** CANCELED what is the format for a node selector?
-	    nodes are probably not HTML elements and so don't have selectors
-*********** TODO look into using the current google maps version of the knowledge map
+************ CANCELED what is the format for a node selector?
+nodes are probably not HTML elements and so don't have selectors
+but it looks like you can use the label object in onCreateLabel as a jquery selector
+************ CANCELED look into using the current google maps version of the knowledge map
+************ DONE onCreateLabel approach
+interactions with nodes are usually dealt with by adding event handlers and styles to node
+************* DONE how what kind of information is passed to an event handler called in onCreateLabel
+the label object can be used as a jquery selector
+************* CANCELED use dynamic css to do the menu
+we can have html code for the menu and use javascript to dynamically set the display and position properties in a mouseover or oncontextmenu event
 ******** have form for parents appear for add parent option
+********* approaches
+********** jquery and forms?
+********** form inside a node
+use javascript and css to blow up a node and create a form inside of it?
 **** connecting a node 
 **** organizing map
 a button that will render the nodes according to the spacetree format

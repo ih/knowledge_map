@@ -159,9 +159,20 @@ include the script it in the html after including the jquery source
 ******** DONE change function in contextMenu
 ******** DONE redraw the graph?
 use refresh function for now
-******* TODO be able to add parents to a node
+******* be able to add parents to a node
 ******** DONE make labels/names visible
 ******** create 'add parent' in context-menu
+********* create a context menu for nodes
+********** jquery context menu plugin
+use regular expression to get node div ids 
+create a context menu using the selector for node divs
+*********** DONE can you have nested context menus?
+if div B is inside div A, can div B have a different context menu?
+
+yes, the contextMenu for the inner div is defined just like that of the outer
+*********** CANCELED what is the format for a node selector?
+	    nodes are probably not HTML elements and so don't have selectors
+*********** TODO look into using the current google maps version of the knowledge map
 ******** have form for parents appear for add parent option
 **** connecting a node 
 **** organizing map

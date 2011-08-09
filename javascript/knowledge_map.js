@@ -85,6 +85,14 @@ function init(){
 	    break;
 	  };
       });
+
+  $('#innerTest').contextMenu(
+      {
+	menu: 'nodeMenu'
+      },
+      function(action, el, pos){
+	alert('blue box');
+      });
   function addNode(){
     var newNode = {
       id: Math.random(),

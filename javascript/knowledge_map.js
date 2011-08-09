@@ -113,4 +113,5 @@ function init(){
   function organizeNodes(){
     alert('organize nodes');
   };
+  $('#date').datepicker();
 };

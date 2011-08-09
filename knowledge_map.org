@@ -1,4 +1,23 @@
 modification to Khan Academy code to allow for users to add content (knowledge map, excercises, videos)
+* background
+** DOM
+the document object model
+** jquery
+a library for javascript
+*** getting started with jQuery
+http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery
+
+** html
+*** forms
+http://www.w3schools.com/html/html_forms.asp
+**** what does a html form consist of?
+<form> </form> tags 
+and <input type .. />
+tags
+
+usually ends with a submit input type
+***** what does the <input type ... /> tag consist of?
+
 * features
 ** allow a user to create and modify knowledge maps
 *** how does the current knowledge map work?
@@ -159,40 +178,69 @@ include the script it in the html after including the jquery source
 ******** DONE change function in contextMenu
 ******** DONE redraw the graph?
 use refresh function for now
-******* be able to add parents to a node
-******** DONE make labels/names visible
-******** DONE create 'add parent' in context-menu
-********* DONE create a context menu for nodes
-********** DONE possible approaches
-*********** DONE jquery context menu plugin
+***** add parents
+****** initially add parents after node is created
+******* DONE make labels/names visible
+******* DONE create 'add parent' in context-menu
+******** DONE create a context menu for nodes
+********* DONE possible approaches
+********** DONE jquery context menu plugin
 probably can't directly use jquery contextMenu plugin, because nodes aren't really html elements
 
 use regular expression to get node div ids 
 create a context menu using the selector for node divs
-************ DONE can you have nested context menus?
+*********** DONE can you have nested context menus?
 if div B is inside div A, can div B have a different context menu?
 
 yes, the contextMenu for the inner div is defined just like that of the outer
-************ CANCELED what is the format for a node selector?
+*********** CANCELED what is the format for a node selector?
 nodes are probably not HTML elements and so don't have selectors
 but it looks like you can use the label object in onCreateLabel as a jquery selector
-************ CANCELED look into using the current google maps version of the knowledge map
-************ DONE onCreateLabel approach
+*********** CANCELED look into using the current google maps version of the knowledge map
+*********** DONE onCreateLabel approach
 interactions with nodes are usually dealt with by adding event handlers and styles to node
-************* DONE how what kind of information is passed to an event handler called in onCreateLabel
+************ DONE how what kind of information is passed to an event handler called in onCreateLabel
 the label object can be used as a jquery selector
-************* CANCELED use dynamic css to do the menu
+************ CANCELED use dynamic css to do the menu
 we can have html code for the menu and use javascript to dynamically set the display and position properties in a mouseover or oncontextmenu event
-******** have form for parents appear for add parent option
-********* approaches
-********** jquery and forms?
-********** form inside a node
+******* have form for parents appear for add parent option
+when the option to add parents is selected a form should appear allowing the user to type in parents for the current node
+******** DONE approaches
+going with form inside context menu option
+********* form inside context menu option
+use jquery to replace the add parents option in the contextmenu with a form for adding parent names
+
+see http://docs.jquery.com/Tutorials:Live_Examples_of_jQuery
+animate a paragraph slide in/out example
+********* jquery and forms?
+********** use .addClass like the snippet on the jquery front page
+********* form inside a node
 use javascript and css to blow up a node and create a form inside of it?
-**** connecting a node 
+
+******** add html for the input in knowledgeMap.html
+********* jquery ui autocomplete
+http://jqueryui.com/demos/autocomplete/#default
+********** DONE install jquery ui
+********** copy autocomplete example to add 'add parent' input/form
+******** make the form hidden initially
+******** jquery for visibility
+have the action of the form option be a slidedown call for the form
+******** autocomplete
+http://jqueryui.com/demos/autocomplete/
+******* form submit action
+have submission of the form add parents to appropriate node
+
+see rateme example in http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery
+******** have form submission action change json variable
+******** have knowledgeMap refresh or addSubtree
+******** do a slideup call for the form or make the menu disappear
 **** organizing map
 a button that will render the nodes according to the spacetree format
 ** implement the models and control for the map using appengine
 *** node creation form
+** make pretty
+jquery ui theme roller
+
 * examples
 ** decompose a traditional document into a knowledge map 
 take a traditional linearly structured document and rewrite it in a graph structure then compare it side-by-side

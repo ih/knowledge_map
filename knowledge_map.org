@@ -157,8 +157,12 @@ include the script it in the html after including the jquery source
 ****** add to the json graph data
 ******* DONE initially make child of root
 ******** DONE change function in contextMenu
+******** DONE redraw the graph?
+use refresh function for now
 ******* TODO be able to add parents to a node
-****** redraw the graph?
+******** make labels/names visible
+******** create 'add parent' in context-menu
+******** have form for parents appear for add parent option
 **** connecting a node 
 **** organizing map
 a button that will render the nodes according to the spacetree format

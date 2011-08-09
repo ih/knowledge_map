@@ -90,9 +90,7 @@ function init(){
       children: []
     };
     json.children.push(newNode);
-    knowledgeMap.loadJSON(json);
-    knowledgeMap.refresh();
-//    alert('Add node');
+    knowledgeMap.addSubtree(json, 'animate');
   };
   function organizeNodes(){
     alert('organize nodes');

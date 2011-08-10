@@ -221,7 +221,7 @@ use javascript and css to blow up a node and create a form inside of it?
 ********* jquery ui autocomplete
 http://jqueryui.com/demos/autocomplete/#default
 ********** DONE install jquery ui
-********** copy autocomplete example to add 'add parent' input/form
+********** TODO copy autocomplete example to add 'add parent' input/form
 ******** make the form hidden initially
 ******** jquery for visibility
 have the action of the form option be a slidedown call for the form
@@ -239,8 +239,18 @@ a button that will render the nodes according to the spacetree format
 ** implement the models and control for the map using appengine
 *** node creation form
 ** make pretty
+*** external 
 jquery ui theme roller
+*** internal
+**** TODO make html more modular
+***** CANCELED main.py
+use djange template inheritance instead to make things more modular
 
+make the html more modular by rendering individual parts of the page and sticking them together in the get() function of the RequestHandler
+****** how do you model nested elements?
+you can pass rendered subparts as template values
+
+***** template inheritance
 * examples
 ** decompose a traditional document into a knowledge map 
 take a traditional linearly structured document and rewrite it in a graph structure then compare it side-by-side

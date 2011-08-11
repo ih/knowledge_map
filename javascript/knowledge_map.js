@@ -69,7 +69,9 @@ function init(){
 					 menu: 'nodeMenu'
 				       },
 				       function(action, el, pos){
-					 alert('blue box');
+					 //alert('blue box');
+					 //make input for add parent visible
+					 //$('#addParent').show('slow');
 				       });
 				   }
   				 });
@@ -98,7 +100,8 @@ function init(){
 	menu: 'nodeMenu'
       },
       function(action, el, pos){
-	alert('blue box');
+	//alert('blue box');
+
       });
   function addNode(){
     var newNode = {
@@ -113,5 +116,7 @@ function init(){
   function organizeNodes(){
     alert('organize nodes');
   };
-  $('#date').datepicker();
+
+  var nodeIds = ['aaaa','bbb','bbbbaaaa', 'c','d','e'];
+  $('#addParent').autocomplete(nodeIds, {multiple: true});
 };

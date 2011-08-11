@@ -18,6 +18,106 @@ tags
 usually ends with a submit input type
 ***** what does the <input type ... /> tag consist of?
 
+** Django
+*** template system
+https://docs.djangoproject.com/en/dev/topics/templates/
+**** what is the purpose of the django template system?
+it provides tags for dynamically rendering html pages
+**** templates
+***** what is a template?
+it is a text document that gives the general form for some text and allows for variance using variables and tags
+****** what are tags?
+special syntax for controlling the logic of the template, they are like functions/operations in a programming language 
+**** variables
+***** what is the syntax for variables in a template?
+{{variable}}
+***** what does the template engine do when it encounters a variable?
+it evaluates the expression in the braces {{}} and inserts the value into the template
+***** what is prohibited in the name of the variable?
+punctuation and spaces
+***** what happens when a dot is encountered in a variable name?
+the following are attempted (in order)
+dictionary lookup -> attribute lookup -> method call -> list-index lookup
+***** what happens if you use a variable that doesn't exist?
+the value of TEMPLATE_STRING_IF_INVALID is returned which is the empty string by default
+**** filters
+***** what are filters?
+the are functions that get applied to template variables after they are evaluated and before they are rendered
+***** what are filters for?
+usually modifying the appearance of the template variables
+***** how do you apply filters?
+use the | character
+{{variable|filter}}
+***** how do you apply multiple filters?
+{{variable|filter1|filter2...}}
+application of filters is left to right
+***** how do you pass an argument to a filter?
+with a :
+{{variable|filter:argument}}
+***** what does the default filter do?
+it assigns a default value (an argument to the filter) to a variable if the variable evaluates to false or ''
+***** how do you get the lenght of a template variable?
+{{variable|length}}
+***** how do you remove html from a template variable?
+use the striptags filter e.g. {{variable|striptags}}
+**** tags
+***** what is the syntax for tags?
+{% tag [arguments] %}
+***** what is the syntax for tags that require a beginning and end?
+{% [tag name] %} template contents {% end[tag name] %}
+***** what is the syntax for the for tag?
+{% for item in some_list %}
+template content possible containing variable for {{item}}
+{% endfor %}
+****** what does the for tag do?
+it goes through each element of the list and inserts the loop contents into the document after each iteration
+***** what is the syntax for the if and else tags?
+{% if boolean variable/expression %}
+{% else %}
+{% endif %}
+
+**** comments
+***** how do you comment part of a single line?
+{# #}
+***** how do you comment multiple lines?
+anything between the tags
+{% comment %}
+{% endcomment %}
+is ignored
+**** template inheritance
+***** what does template inheritance do?
+it makes it easy to create new documents with the same overall form but with parts of it changed
+***** how do you mark a section of a template that can be modified by child templates?
+use a block tag
+***** what is the syntax for a block tag?
+{% block [block_name] %} {% endblock [block_name] %} different blocks must have different names
+****** what does the block tag do?
+it marks part of a template that can be changed by child templates
+***** what is the syntax for the extends tag?
+{% extends "[parent template name]" %} it must be the first tag used in the template
+****** what does the extends tag do?
+it makes the template a child of some other template
+***** how do you create a child template?
+start with the extends tag and then define contents for blocks that you want to change in the parent template using {% block [block_name] %} {% endblock [blockname] %} where block_name is a block in the parent.  you can also add new blocks if this child will be a parent for some other template
+***** what is a common way to use templates?
+create a base.html template that captures the style of your website and has blocks for different sections to base.html 
+
+create a section template for each section with styling/format for that section
+
+create individual children templates of the sections that correspond to actual contents for that section
+
+***** where must the extends tag go?
+at the beginning of the file
+***** what should you do if you find yourself using a lot of duplication among templates?
+create a parent template and have the pages with duplication inherit from it
+***** how do you get the content of a block from a parent template?
+{{ block.super }}
+****** why would you want to use the block.super tag?
+if you want to append content to the block of the parent template instead of overwriting it
+***** can different block tags have the same name?
+no
+
+
 * features
 ** allow a user to create and modify knowledge maps
 *** how does the current knowledge map work?
@@ -218,15 +318,19 @@ animate a paragraph slide in/out example
 use javascript and css to blow up a node and create a form inside of it?
 
 ******** add html for the input in knowledgeMap.html
-********* jquery ui autocomplete
+for now have it outside of the map, eventually have the forms appear in the node?
+********* CANCELED jquery ui autocomplete
+jquery ui lacks support for multiple input
+instead try http://code.drewwilson.com/entry/autosuggest-jquery-plugin
 http://jqueryui.com/demos/autocomplete/#default
 ********** DONE install jquery ui
-********** TODO copy autocomplete example to add 'add parent' input/form
+********** CANCELED copy autocomplete example to add 'add parent' input/form
+********* TODO autosuggest
+http://code.drewwilson.com/entry/autosuggest-jquery-plugin
 ******** make the form hidden initially
 ******** jquery for visibility
 have the action of the form option be a slidedown call for the form
-******** autocomplete
-http://jqueryui.com/demos/autocomplete/
+use .show()
 ******* form submit action
 have submission of the form add parents to appropriate node
 

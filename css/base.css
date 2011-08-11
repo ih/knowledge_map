@@ -1,4 +1,6 @@
-
+#addParent {
+/*    display: none;		*/
+}
 #log {
     position:absolute;
     top:10px;

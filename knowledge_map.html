@@ -1,8 +1,9 @@
 <html>
   <head>
+    <link type='text/css' href='/css/autoSuggest.css' rel='stylesheet' />
     <link type='text/css' href='/css/base.css' rel='stylesheet' />
     <link type='text/css' href='/css/jquery.contextMenu.css' rel='stylesheet' />
-    <link type='text/css' href='/css/autoSuggest.css' rel='stylesheet' />
+
     <!-- <link type='text/css' href='/css/Spacetree.css' rel='stylesheet' /> -->
     <script type='text/javascript' src='/javascript/jquery-1.6.2.min.js'></script>
     <script type='text/javascript' src='/javascript/jit/jit-yc.js'> </script>
@@ -14,9 +15,10 @@
   </head>
   <!-- <body onload='init()'> -->
   <body>
-    <label for='addParent'>Add Parent:</label>
-    <input type='text' id='addParent'>    
-    
+    <div id='addParent'>
+      <label for='addParent'>Add Parent:</label>
+      <input type='text'>    
+    </div>
     <div id='map'></div>
 
     <!-- html for context menus  -->

@@ -303,7 +303,7 @@ interactions with nodes are usually dealt with by adding event handlers and styl
 the label object can be used as a jquery selector
 ************ CANCELED use dynamic css to do the menu
 we can have html code for the menu and use javascript to dynamically set the display and position properties in a mouseover or oncontextmenu event
-******* have form for parents appear for add parent option
+******* DONE have form for parents appear for add parent option
 when the option to add parents is selected a form should appear allowing the user to type in parents for the current node
 
 for now have the input appear at the top of the page
@@ -320,7 +320,7 @@ animate a paragraph slide in/out example
 ********* form inside a node
 use javascript and css to blow up a node and create a form inside of it?
 
-******** add html for the input in knowledgeMap.html
+******** DONE add html for the input in knowledgeMap.html
 for now have forms for content creation appear at the top of the page
 ********* CANCELED jquery ui autocomplete
 jquery ui lacks support for multiple input
@@ -331,17 +331,31 @@ http://jqueryui.com/demos/autocomplete/#default
 ********* autosuggest
 http://code.drewwilson.com/entry/autosuggest-jquery-plugin
 ********** DONE get it running
-********** TODO make code nice
-*********** have knowledge_map.js load in jquery document.ready style
-******** make the form hidden initially
-******** jquery for visibility
+********** make code nice
+*********** DONE have knowledge_map.js load in jquery document.ready style
+*********** split javascript into different files
+************ how can they all get access to json (the node data)?
+one possibility is to structure things server side and pass node data as template values 
+******** DONE make the form hidden initially
+******** DONE jquery for visibility
 have the action of the form option be a slidedown call for the form
 use .show()
 ******* form submit action
-have submission of the form add parents to appropriate node
-
+have submission of the form add parents to appropriate node then make the form disappear
 see rateme example in http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery
 ******** have form submission action change json variable
+********* DONE how do you know what node to add parents to?
+node.id from node passed to onCreateLabel
+********** DONE seems like el passed to action function of contextMenu should have the info...how do you get it out?
+node.id
+********* contextMenu function in onCreateLabel 
+have the action taken call a function that waits until the form has been submitted, pass in node.id where node is the one getting new parents
+
+once the form has been submitted there should be hidden field of the input that has the new parents
+
+take those parents and modify the json tree 
+
+make a call to addSubTree with the modified json tree
 ******** have knowledgeMap refresh or addSubtree
 ******** do a slideup call for the form or make the menu disappear
 **** organizing map

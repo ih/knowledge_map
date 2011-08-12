@@ -117,6 +117,5 @@ function init(){
     alert('organize nodes');
   };
 
-  var nodeIds = ['aaaa','bbb','bbbbaaaa', 'c','d','e'];
-  $('#addParent').autocomplete(nodeIds, {multiple: true});
 };
+

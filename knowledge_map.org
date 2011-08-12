@@ -305,8 +305,11 @@ the label object can be used as a jquery selector
 we can have html code for the menu and use javascript to dynamically set the display and position properties in a mouseover or oncontextmenu event
 ******* have form for parents appear for add parent option
 when the option to add parents is selected a form should appear allowing the user to type in parents for the current node
+
+for now have the input appear at the top of the page
 ******** DONE approaches
-going with form inside context menu option
+going with form appearing at the top of the page
+********* form/inputs appear at the top of the page
 ********* form inside context menu option
 use jquery to replace the add parents option in the contextmenu with a form for adding parent names
 
@@ -318,15 +321,18 @@ animate a paragraph slide in/out example
 use javascript and css to blow up a node and create a form inside of it?
 
 ******** add html for the input in knowledgeMap.html
-for now have it outside of the map, eventually have the forms appear in the node?
+for now have forms for content creation appear at the top of the page
 ********* CANCELED jquery ui autocomplete
 jquery ui lacks support for multiple input
 instead try http://code.drewwilson.com/entry/autosuggest-jquery-plugin
 http://jqueryui.com/demos/autocomplete/#default
 ********** DONE install jquery ui
 ********** CANCELED copy autocomplete example to add 'add parent' input/form
-********* TODO autosuggest
+********* autosuggest
 http://code.drewwilson.com/entry/autosuggest-jquery-plugin
+********** DONE get it running
+********** TODO make code nice
+*********** have knowledge_map.js load in jquery document.ready style
 ******** make the form hidden initially
 ******** jquery for visibility
 have the action of the form option be a slidedown call for the form

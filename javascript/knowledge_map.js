@@ -85,21 +85,16 @@ $(function (){
       function(action, el, pos){
 	switch(action){
 	case 'add':
-	  addNode();
-	  break;
-	case 'organize':
-	  organizeNodes();
+	  $('#addNode').show('slow');
 	  break;
 	};
       });
 
-    $('#innerTest').contextMenu(
-      {
-	menu: 'nodeMenu'
-      },
-      function(action, el, pos){
-	//alert('blue box');
-
+    $('#addNode').submit(
+      function(event){
+	var values = $(this).serialize();
+	alert(values);
+	event.preventDefault();
       });
     function addNode(){
       var newNode = {

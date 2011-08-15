@@ -243,112 +243,114 @@ once the spacetree instance is created certain functions are called for the inst
 *** DONE add rectangleWithOthers to knowledge_map.js
 **** DONE what is the format for otherParents
 a list of node ids
-*** be able to create a node and connect to parents
-**** creating a node
-***** DONE how should a new node be created?
+*** be able to create a node and connect to other nodes
+**** create a node
+***** with new label only
+****** DONE how should a new node be created?
 click on the empty part of the map 
-this creates a node at that location
+this drops down a menu at the top of the screen for creating a new node
 
 have a button "organize" which does the renders the spacetree layout, this will allow the user to place nodes roughly where they want as they begin to figure out how it relates to other nodes and once the structure is determined one can get a cleaner layout quickly
-****** possibilities
-******* click on empty part of map 
+******* possibilities
+******** click on empty part of map 
 this one
-******* click on node 
-******* drag from empty to node
-******* button for creating a node in prominent location on the map
+******** click on node 
+******** drag from empty to node
+******** button for creating a node in prominent location on the map
 
-***** right click menu
+****** right click menu
 right clicking on the map records the position of the click for drawing an added node to
-****** DONE jquery context menu plugin
+******* DONE jquery context menu plugin
 http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/
 in order to get the menu to properly display in the right place have the css position be set to fixed
-*******  jquery basics
+********  jquery basics
 javascript library
-******** DONE installation 
+********* DONE installation 
 http://www.jquerytutorialsforbeginners.com/installing-and-using-jquery/
-******** DONE event handlers
+********* DONE event handlers
 jquerytutorialsforbeginners event handlers
-******** plugins
-********* installation
+********* plugins
+********** installation
 place the folder for the plugin into the javascript source
 include the script it in the html after including the jquery source
-***** add node
-****** add to the json graph data
+****** TODO drop-down form
+****** modify json graph data
 ******* DONE initially make child of root
 ******** DONE change function in contextMenu
 ******** DONE redraw the graph?
 use refresh function for now
-***** add parents
-****** initially add parents after node is created
-******* DONE make labels/names visible
-******* DONE create 'add parent' in context-menu
-******** DONE create a context menu for nodes
-********* DONE possible approaches
-********** DONE jquery context menu plugin
+
+****** CANCELED add parents
+******* initially add parents after node is created
+******** DONE make labels/names visible
+******** DONE create 'add parent' in context-menu
+********* DONE create a context menu for nodes
+********** DONE possible approaches
+*********** DONE jquery context menu plugin
 probably can't directly use jquery contextMenu plugin, because nodes aren't really html elements
 
 use regular expression to get node div ids 
 create a context menu using the selector for node divs
-*********** DONE can you have nested context menus?
+************ DONE can you have nested context menus?
 if div B is inside div A, can div B have a different context menu?
 
 yes, the contextMenu for the inner div is defined just like that of the outer
-*********** CANCELED what is the format for a node selector?
+************ CANCELED what is the format for a node selector?
 nodes are probably not HTML elements and so don't have selectors
 but it looks like you can use the label object in onCreateLabel as a jquery selector
-*********** CANCELED look into using the current google maps version of the knowledge map
-*********** DONE onCreateLabel approach
+************ CANCELED look into using the current google maps version of the knowledge map
+************ DONE onCreateLabel approach
 interactions with nodes are usually dealt with by adding event handlers and styles to node
-************ DONE how what kind of information is passed to an event handler called in onCreateLabel
+************* DONE how what kind of information is passed to an event handler called in onCreateLabel
 the label object can be used as a jquery selector
-************ CANCELED use dynamic css to do the menu
+************* CANCELED use dynamic css to do the menu
 we can have html code for the menu and use javascript to dynamically set the display and position properties in a mouseover or oncontextmenu event
-******* DONE have form for parents appear for add parent option
+******** DONE have form for parents appear for add parent option
 when the option to add parents is selected a form should appear allowing the user to type in parents for the current node
 
 for now have the input appear at the top of the page
-******** DONE approaches
+********* DONE approaches
 going with form appearing at the top of the page
-********* form/inputs appear at the top of the page
-********* form inside context menu option
+********** form/inputs appear at the top of the page
+********** form inside context menu option
 use jquery to replace the add parents option in the contextmenu with a form for adding parent names
 
 see http://docs.jquery.com/Tutorials:Live_Examples_of_jQuery
 animate a paragraph slide in/out example
-********* jquery and forms?
-********** use .addClass like the snippet on the jquery front page
-********* form inside a node
+********** jquery and forms?
+*********** use .addClass like the snippet on the jquery front page
+********** form inside a node
 use javascript and css to blow up a node and create a form inside of it?
 
-******** DONE add html for the input in knowledgeMap.html
+********* DONE add html for the input in knowledgeMap.html
 for now have forms for content creation appear at the top of the page
-********* CANCELED jquery ui autocomplete
+********** CANCELED jquery ui autocomplete
 jquery ui lacks support for multiple input
 instead try http://code.drewwilson.com/entry/autosuggest-jquery-plugin
 http://jqueryui.com/demos/autocomplete/#default
-********** DONE install jquery ui
-********** CANCELED copy autocomplete example to add 'add parent' input/form
-********* autosuggest
+*********** DONE install jquery ui
+*********** CANCELED copy autocomplete example to add 'add parent' input/form
+********** autosuggest
 http://code.drewwilson.com/entry/autosuggest-jquery-plugin
-********** DONE get it running
-********** make code nice
-*********** DONE have knowledge_map.js load in jquery document.ready style
-*********** split javascript into different files
-************ how can they all get access to json (the node data)?
+*********** DONE get it running
+*********** make code nice
+************ DONE have knowledge_map.js load in jquery document.ready style
+************ split javascript into different files
+************* how can they all get access to json (the node data)?
 one possibility is to structure things server side and pass node data as template values 
-******** DONE make the form hidden initially
-******** DONE jquery for visibility
+********* DONE make the form hidden initially
+********* DONE jquery for visibility
 have the action of the form option be a slidedown call for the form
 use .show()
-******* form submit action
+******** form submit action
 have submission of the form add parents to appropriate node then make the form disappear
 see rateme example in http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery
-******** have form submission action change json variable
-********* DONE how do you know what node to add parents to?
+********* have form submission action change json variable
+********** DONE how do you know what node to add parents to?
 node.id from node passed to onCreateLabel
-********** DONE seems like el passed to action function of contextMenu should have the info...how do you get it out?
+*********** DONE seems like el passed to action function of contextMenu should have the info...how do you get it out?
 node.id
-********* contextMenu function in onCreateLabel 
+********** contextMenu function in onCreateLabel 
 have the action taken call a function that waits until the form has been submitted, pass in node.id where node is the one getting new parents
 
 once the form has been submitted there should be hidden field of the input that has the new parents
@@ -356,9 +358,14 @@ once the form has been submitted there should be hidden field of the input that 
 take those parents and modify the json tree 
 
 make a call to addSubTree with the modified json tree
-******** have knowledgeMap refresh or addSubtree
-******** do a slideup call for the form or make the menu disappear
-**** organizing map
+********* have knowledgeMap refresh or addSubtree
+********* do a slideup call for the form or make the menu disappear
+***** with parents and children
+***** with question and answer
+**** edit a node
+***** context-menu
+***** drop-down form
+**** CANCELED organizing map
 a button that will render the nodes according to the spacetree format
 ** implement the models and control for the map using appengine
 *** node creation form

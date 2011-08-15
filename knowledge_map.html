@@ -15,19 +15,17 @@
   </head>
   <!-- <body onload='init()'> -->
   <body>
-    <div id='addParent'>
-      <label for='addParent'>Add Parent:</label>
-      <input type='text'>    
-    </div>
+    <form id='addNode'>
+      Label: <input type='text' name='label' />
+      <input type="submit" value="Submit" />
+    </form>
+
     <div id='map'></div>
 
     <!-- html for context menus  -->
     <ul id="myMenu" class="contextMenu">
       <li class="add">
         <a href="#add">add node</a>
-      </li>
-      <li class="organize">
-        <a href="#organize">organize</a>
       </li>
     </ul>
     <ul id="nodeMenu" class="contextMenu">

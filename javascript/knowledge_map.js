@@ -13,7 +13,17 @@ $(function (){
   		   id: 'c',
   		   name: 'c',
   		   data: {},
-  		   children: []
+  		   children: [{
+				id: 'f',
+				name: 'f',
+				data: {},
+				children: [{
+					     id: 'g',
+					     name: 'g',
+					     data: {},
+					     children: []
+					   }]
+			      }]
   		 },
   		 {
   		   id: 'd',
@@ -53,6 +63,7 @@ $(function (){
     var knowledgeMap = new $jit.ST({
   				     injectInto : 'map',
 				     orientation : 'bottom',
+				     constrained: false,
   				     Navigation: {
   				       enable:true,
   				       panning:true
@@ -95,12 +106,10 @@ $(function (){
     $('#addNode').submit(
       function(event){
 	var values = $(this).serializeArray();
-	//var parents = getParentIds(values);
 	var parents = $('#as-values-parents')[0].value.split(',');
 	//alert(parents.split(',')[1]);
 	var children = getChildrenIds(values);
 	var data = getData(values);
-	//var id = getId(values);
 	var id = $('#label')[0].value;
 	addNode(id, parents, children, data);
 	//hide and reset the form (this might automatically be done when connecting to backend
@@ -115,10 +124,7 @@ $(function (){
     function getData(values){
       return {};
     }
-    function getId(values){
-      alert(values.toSource());
-      return 'q';
-    }
+
     function addNode(initId, initParentIds, initChildrenIds, initData){
       var newNode = {
 	id: initId,
@@ -130,8 +136,15 @@ $(function (){
       addAsChild(newNode, deepestParentId, json);
       knowledgeMap.addSubtree(json, 'animate');
     };
-    function addAsChild(node, parent, tree){
-      json.children.push(node);
+    function addAsChild(node, parentId, tree){
+      if(tree.id == parentId){
+	tree.children.push(node);
+      }
+      else{
+	$.each(tree.children, function(index, value){
+		 addAsChild(node, parentId, value);
+	       });
+      }
     }
     function getDeepestParentId(initParents, tree){
       return initParents[0];

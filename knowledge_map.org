@@ -271,18 +271,23 @@ jquerytutorialsforbeginners event handlers
 ********* installation
 place the folder for the plugin into the javascript source
 include the script it in the html after including the jquery source
-***** drop-down form
-****** fields for label and parents
+***** DONE drop-down form
+****** DONE fields for label and parents
 ******* DONE how does autosuggest capture input?
 you can get it by calling serialzeArray on the form element inside a jquery submit event, data is stored in as_values_[name set in autosuggest options]
 ******** change autosuggest to only apply to the parents/children field?
-****** parse the form data 
+****** DONE parse the form data 
+you can access the form fields by id directly using jquery and get the dom element by $('#field_id')[0], the value is then $('#field_id')[0].value
 ***** modify json graph data
 ****** DONE initially make child of root
 ******* DONE change function in contextMenu
 ******* DONE redraw the graph?
 use refresh function for now
 
+****** add node as child of deepest parent
+******* TODO why aren't deeper levels than 2 being displayed in spacetree?
+constrained set to false
+maybe override node needs to be true..?	
 ***** CANCELED add parents
 ****** initially add parents after node is created
 ******* DONE make labels/names visible

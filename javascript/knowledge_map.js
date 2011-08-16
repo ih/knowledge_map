@@ -95,19 +95,20 @@ $(function (){
     $('#addNode').submit(
       function(event){
 	var values = $(this).serializeArray();
-	var parents = getParentIds(values);
+	//var parents = getParentIds(values);
+	var parents = $('#as-values-parents')[0].value.split(',');
+	//alert(parents.split(',')[1]);
 	var children = getChildrenIds(values);
 	var data = getData(values);
-	var id = getId(values);
+	//var id = getId(values);
+	var id = $('#label')[0].value;
 	addNode(id, parents, children, data);
 	//hide and reset the form (this might automatically be done when connecting to backend
 	$(this).hide('slow');
 	$(this)[0].reset(); //TODO: make sure autosuggest field resets
 	event.preventDefault();
       });
-    function getParentIds(values){
-      return ['a'];
-    }
+
     function getChildrenIds(values){
       return [];
     }
@@ -115,6 +116,7 @@ $(function (){
       return {};
     }
     function getId(values){
+      alert(values.toSource());
       return 'q';
     }
     function addNode(initId, initParentIds, initChildrenIds, initData){
@@ -124,14 +126,14 @@ $(function (){
 	data: initData,
 	children: initChildrenIds
       };
-      var deepestParentId = getDeepestParentId(json, initParentIds);
+      var deepestParentId = getDeepestParentId(initParentIds, json);
       addAsChild(newNode, deepestParentId, json);
       knowledgeMap.addSubtree(json, 'animate');
     };
     function addAsChild(node, parent, tree){
       json.children.push(node);
     }
-    function getDeepestParentId(tree, initParents){
+    function getDeepestParentId(initParents, tree){
       return initParents[0];
     }
     //for autocomplete fields in add/edit node forms

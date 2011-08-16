@@ -117,7 +117,6 @@ if you want to append content to the block of the parent template instead of ove
 ***** can different block tags have the same name?
 no
 
-
 * features
 ** allow a user to create and modify knowledge maps
 *** how does the current knowledge map work?
@@ -274,7 +273,8 @@ place the folder for the plugin into the javascript source
 include the script it in the html after including the jquery source
 ***** drop-down form
 ****** fields for label and parents
-******* how does autosuggest capture input?
+******* DONE how does autosuggest capture input?
+you can get it by calling serialzeArray on the form element inside a jquery submit event, data is stored in as_values_[name set in autosuggest options]
 ******** change autosuggest to only apply to the parents/children field?
 ****** parse the form data 
 ***** modify json graph data

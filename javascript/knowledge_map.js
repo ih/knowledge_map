@@ -94,8 +94,8 @@ $(function (){
 
     $('#addNode').submit(
       function(event){
-	var values = $(this).serialize();
-	alert(values);
+	var values = $(this).serializeArray();
+	alert(values.toSource());
 	$('#addNode').hide('slow');
 	event.preventDefault();
       });
@@ -114,5 +114,5 @@ $(function (){
 		  {value: 'aaaa', name: 'aaaa'},
 		  {value: 'aab', name: 'aab'}
 		]};
-    $('input[type=text]').autoSuggest(data.items, {selectedItemProp: 'name', searchObjProps: 'name'});
+    $('#parents').autoSuggest(data.items, {selectedItemProp: 'name', searchObjProps: 'name', asHtmlID:'parents'});
   });

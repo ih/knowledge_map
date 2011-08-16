@@ -67,9 +67,11 @@ $(function (){
 					   menu: 'nodeMenu'
 					 },
 					 function(action, el, pos){
-					   alert(node.toSource());
-					   //make input for add parent visible
-					   $('#addParent').show('slow');
+					   switch(action){
+					   case 'edit':
+					     alert(node.toSource());
+					   }
+
 					 });
 				     }
   				   });
@@ -80,7 +82,7 @@ $(function (){
     /* menu for adding/organizing map */
     $('#map').contextMenu(
       {
-	menu: 'myMenu'
+	menu: 'mapMenu'
       },
       function(action, el, pos){
 	switch(action){
@@ -94,6 +96,7 @@ $(function (){
       function(event){
 	var values = $(this).serialize();
 	alert(values);
+	$('#addNode').hide('slow');
 	event.preventDefault();
       });
     function addNode(){
@@ -106,9 +109,7 @@ $(function (){
       json.children.push(newNode);
       knowledgeMap.addSubtree(json, 'animate');
     };
-    function organizeNodes(){
-      alert('organize nodes');
-    };
+    //for autocomplete fields in add/edit node forms
     var data = {items:[
 		  {value: 'aaaa', name: 'aaaa'},
 		  {value: 'aab', name: 'aab'}

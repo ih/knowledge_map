@@ -64,6 +64,7 @@ $(function (){
   				     injectInto : 'map',
 				     orientation : 'bottom',
 				     constrained: false,
+				     levelsToShow: 70,
   				     Navigation: {
   				       enable:true,
   				       panning:true

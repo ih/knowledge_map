@@ -174,6 +174,7 @@ what does a node correspond to?
 allow user to create questions that don't have answers and have visual appearance of the node in the map indicate this
 ** interactive answering for flashcards
 when entering answer for a flashcard have a text region where they can type then compare what is typed to the true answer
+*** after review ask user to list mistakes and create cards for those mistakes
 ** allow abstraction over a set of nodes
 allow excercises to be grouped together
 

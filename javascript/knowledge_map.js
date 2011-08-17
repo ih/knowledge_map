@@ -108,6 +108,8 @@ $(function (){
       function(event){
 	var values = $(this).serializeArray();
 	var parents = $('#as-values-parents')[0].value.split(',');
+	parents = _.without(parents, ""); //temporary, fix in autoSuggest
+	parents = _.map(parents, _.trim);
 	//alert(parents.split(',')[1]);
 	var children = getChildrenIds(values);
 	var data = getData(values);
@@ -147,8 +149,20 @@ $(function (){
 	       });
       }
     }
-    function getDeepestParentId(initParents, tree){
-      return initParents[0];
+    //TODO make tree an object with a depth function and pass this to map
+    function getDeepestParentId(parentIds, tree){
+      //assumes parentIds are valid and in the tree
+      var parentDepths = _.map(parentIds, function(parentId){return depth(parentId, tree);});
+      return parentIds[0];
+    }
+
+    function depth(nodeId, tree){
+      if(nodeId == tree.id){
+	return 0;
+      }
+      else{
+	return _.min(_.map(tree.children, function(child){return depth(nodeId,child);}))+1;
+      }
     }
     //for autocomplete fields in add/edit node forms
     var data = {items:[

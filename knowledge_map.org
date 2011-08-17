@@ -285,14 +285,16 @@ you can access the form fields by id directly using jquery and get the dom eleme
 ******* DONE redraw the graph?
 use refresh function for now
 
-****** add node as child of deepest parent
+****** DONE add node as child of deepest parent
 ******* DONE why aren't deeper levels than 2 being displayed in spacetree?
 constrained set to false
 need to set levelsToShow in spaceTree
 ******* DONE add underscore.js
 ******* DONE iterate through parent ids and compute the depth of each
-******* use underscore's sortBy method to find the deepest
-****** clear the form
+******* DONE use underscore's sortBy method to find the deepest
+****** CANCELED clear the form
+it's probably useful to have the previous results in the form, especially for rapid adding of nodes
+****** add the other parents as otherParents data
 ***** CANCELED add parents
 ****** initially add parents after node is created
 ******* DONE make labels/names visible

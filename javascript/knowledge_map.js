@@ -133,13 +133,14 @@ $(function (){
     }
 
     function addNode(initId, initParentIds, initChildrenIds, initData){
+      var sortedByDepth = sortByDepth(initParentIds, json);
       var newNode = {
 	id: initId,
 	name: initId,
 	data: initData,
 	children: initChildrenIds
       };
-      var deepestParentId = getDeepestParentId(initParentIds, json);
+      var deepestParentId = sortedByDepth.pop();
       addAsChild(newNode, deepestParentId, json);
       knowledgeMap.addSubtree(json, 'animate');
     };
@@ -154,12 +155,13 @@ $(function (){
       }
     }
     //TODO make tree an object with a depth function and pass this to map
-    function getDeepestParentId(parentIds, tree){
+    function sortByDepth(parentIds, tree){
       //assumes parentIds are valid and in the tree
       var parentDepths = _.map(parentIds, function(parentId){return depth(parentId, tree);});
       var depthsAndIds = _.zip(parentIds,parentDepths);
       var sortedByDepth = _.sortBy(depthsAndIds, function(depthAndId){return depthAndId[1];});
-      return _.last(sortedByDepth)[0];
+      var justSortedIds = _.map(sortedByDepth, function(depthAndId){return depthAndId[0];});
+      return justSortedIds;
     }
 
     function depth(nodeId, tree){

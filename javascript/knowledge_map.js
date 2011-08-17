@@ -108,8 +108,7 @@ $(function (){
       function(event){
 	var values = $(this).serializeArray();
 	var parents = $('#as-values-parents')[0].value.split(',');
-	parents = _.without(parents, ""); //temporary, fix in autoSuggest
-	parents = _.map(parents, _.trim);
+	parents = validateParents(parents); //temporary, fix in autoSuggest
 	//alert(parents.split(',')[1]);
 	var children = getChildrenIds(values);
 	var data = getData(values);
@@ -121,6 +120,11 @@ $(function (){
 	event.preventDefault();
       });
 
+    function validateParents(parents){
+      parents = _.without(parents, "");
+      parents = _.map(parents, _.trim);
+      return parents;
+    }
     function getChildrenIds(values){
       return [];
     }
@@ -153,7 +157,9 @@ $(function (){
     function getDeepestParentId(parentIds, tree){
       //assumes parentIds are valid and in the tree
       var parentDepths = _.map(parentIds, function(parentId){return depth(parentId, tree);});
-      return parentIds[0];
+      var depthsAndIds = _.zip(parentIds,parentDepths);
+      var sortedByDepth = _.sortBy(depthsAndIds, function(depthAndId){return depthAndId[1];});
+      return _.last(sortedByDepth)[0];
     }
 
     function depth(nodeId, tree){

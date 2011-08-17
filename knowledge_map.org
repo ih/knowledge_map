@@ -289,8 +289,8 @@ use refresh function for now
 ******* DONE why aren't deeper levels than 2 being displayed in spacetree?
 constrained set to false
 need to set levelsToShow in spaceTree
-******* add underscore.js
-******* iterate through parent ids and compute the depth of each
+******* DONE add underscore.js
+******* DONE iterate through parent ids and compute the depth of each
 ******* use underscore's sortBy method to find the deepest
 ****** clear the form
 ***** CANCELED add parents

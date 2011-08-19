@@ -292,9 +292,9 @@ need to set levelsToShow in spaceTree
 ******* DONE add underscore.js
 ******* DONE iterate through parent ids and compute the depth of each
 ******* DONE use underscore's sortBy method to find the deepest
-****** CANCELED clear the form
-it's probably useful to have the previous results in the form, especially for rapid adding of nodes
 ****** DONE add the other parents as otherParents data
+******* how does autosuggest work?
+it's probably useful to have the previous results in the form, especially for rapid adding of nodes
 ***** CANCELED add parents
 ****** initially add parents after node is created
 ******* DONE make labels/names visible

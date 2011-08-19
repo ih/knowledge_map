@@ -244,7 +244,7 @@ once the spacetree instance is created certain functions are called for the inst
 **** DONE what is the format for otherParents
 a list of node ids
 *** be able to create a node and connect to other nodes
-**** create a node
+**** DONE create a node
 ***** DONE how should a new node be created?
 click on the empty part of the map 
 this drops down a menu at the top of the screen for creating a new node
@@ -279,7 +279,7 @@ you can get it by calling serialzeArray on the form element inside a jquery subm
 ******** change autosuggest to only apply to the parents/children field?
 ****** DONE parse the form data 
 you can access the form fields by id directly using jquery and get the dom element by $('#field_id')[0], the value is then $('#field_id')[0].value
-***** modify json graph data
+***** DONE modify json graph data
 ****** DONE initially make child of root
 ******* DONE change function in contextMenu
 ******* DONE redraw the graph?
@@ -293,8 +293,7 @@ need to set levelsToShow in spaceTree
 ******* DONE iterate through parent ids and compute the depth of each
 ******* DONE use underscore's sortBy method to find the deepest
 ****** DONE add the other parents as otherParents data
-******* how does autosuggest work?
-it's probably useful to have the previous results in the form, especially for rapid adding of nodes
+       
 ***** CANCELED add parents
 ****** initially add parents after node is created
 ******* DONE make labels/names visible
@@ -381,7 +380,8 @@ make a call to addSubTree with the modified json tree
 **** CANCELED organizing map
 a button that will render the nodes according to the spacetree format
 ** implement the models and control for the map using appengine
-*** node creation form
+*** seeting up models etc
+**** TODO backbone.js
 ** make pretty
 *** external 
 jquery ui theme roller

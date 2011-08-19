@@ -113,7 +113,7 @@ $(function (){
 	var children = getChildrenIds(values);
 	var data = getData(values);
 	var id = $('#label')[0].value;
-	addNode(id, parents, children, data);
+	addNode(id, data, parents, children);
 	//hide and reset the form (this might automatically be done when connecting to backend
 	$(this).hide('slow');
 	$(this)[0].reset(); //TODO: make sure autosuggest field resets
@@ -132,18 +132,21 @@ $(function (){
       return {};
     }
 
-    function addNode(initId, initParentIds, initChildrenIds, initData){
-      var sortedByDepth = sortByDepth(initParentIds, json);
-      var newNode = {
-	id: initId,
-	name: initId,
-	data: initData,
-	children: initChildrenIds
-      };
-      var deepestParentId = sortedByDepth.pop();
+    function addNode(initId, initData, initParentIds, initChildrenIds){
+      var parentIdsByDepth = sortByDepth(initParentIds, json);
+      var deepestParentId = parentIdsByDepth.pop();
+      var newNode = buildNode(initId, initData, parentIdsByDepth, initChildrenIds);
       addAsChild(newNode, deepestParentId, json);
       knowledgeMap.addSubtree(json, 'animate');
     };
+    function buildNode(initId, initData, initParentIds, initChildrenIds){
+      return {
+	id: initId,
+	name: initId,
+	data: {otherParents: initParentIds},
+	children: initChildrenIds
+      };
+    }
     function addAsChild(node, parentId, tree){
       if(tree.id == parentId){
 	tree.children.push(node);

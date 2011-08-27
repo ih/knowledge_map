@@ -381,7 +381,19 @@ make a call to addSubTree with the modified json tree
 a button that will render the nodes according to the spacetree format
 ** implement the models and control for the map using appengine
 *** seeting up models etc
+two different approaches
 **** TODO backbone.js
+***** gae backbone example
+https://github.com/ccarpenterg/todolist
+**** integrate with khan code
+***** have graph data come from backend 
+instead of json being explicit in knowledgemap.js create json from exercise models in the data store
+****** copy minimal parts of ExerciseGraph from models.py
+****** modify main.py to send exercises to knowledgemap.html
+
+***** have user actions add to the datastore
+****** figure out how to use ajax to update models in knowledgemap.js
+preferably through a restful interface, which would make switching to backbone.js easier (?)       
 ** make pretty
 *** external 
 jquery ui theme roller

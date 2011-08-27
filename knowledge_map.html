@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <link type='text/css' href='/css/autoSuggest.css' rel='stylesheet' />
@@ -15,26 +16,28 @@
     <script type='text/javascript' src='/javascript/knowledge_map.js'></script>
     <!-- <script type='text/javascript' src='/javascript/test.js'></script> -->
   </head>
-  <!-- <body onload='init()'> -->
+
   <body>
+    <div id='instructions'>
+      Add a node by right clicking in the graph area and selecting 'add node'.  Parents should be nodes currently in the map.  After typing the name of the parent type ',' to make sure the parent is added to the input box.  The node will be added as a child to the deepest parent.
+    </div>
     <form id='addNode'>
-      Label: <input type='text' id='label' name='label' />
-      Parents: <input type='text' id='parents' name='parents' />
+      <label for='label'>Label</label> <input type='text' id='label' name='label' />
+      <label for='parents'>Parents</label> <input type='text' id='parents' name='parents' />
       <input type="submit" value="Submit" />
     </form>
 
     <div id='map'></div>
-
     <!-- html for context menus  -->
-    <ul id="mapMenu" class="contextMenu">
+    <ol id="mapMenu" class="contextMenu">
       <li class="add">
         <a href="#add">add node</a>
       </li>
-    </ul>
-    <ul id="nodeMenu" class="contextMenu">
+    </ol>
+    <ol id="nodeMenu" class="contextMenu">
       <li class="edit">
         <a href="#edit">edit node</a>
       </li>
-    </ul>
+    </ol>
   </body>
 </html>
